@@ -7,6 +7,7 @@ import com.actionbarsherlock.view.MenuItem;
 import com.actionbarsherlock.view.SubMenu;
 import com.example.movieapp.R;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.GestureDetector;
@@ -168,7 +169,7 @@ public class MainActivity extends SherlockActivity implements
 //	        subMenu1Item.setShowAsAction(MenuItem.SHOW_AS_ACTION_IF_ROOM| MenuItem.SHOW_AS_ACTION_WITH_TEXT);
 			
 			SubMenu submenu = menu.addSubMenu(0, Menu.NONE, 1, "菜单");
-			submenu.add("附近影院");
+			submenu.add("影院列表");
 			submenu.add("场次票价");
 			submenu.add("豆瓣评论");
 			return true;
@@ -181,9 +182,19 @@ public class MainActivity extends SherlockActivity implements
 
 		@Override
 		public boolean onActionItemClicked(ActionMode mode, MenuItem item) {
-			Toast.makeText(MainActivity.this, "Got click: " + item,
-					Toast.LENGTH_SHORT).show();
+//			Toast.makeText(MainActivity.this, "Got click: " + item,
+//					Toast.LENGTH_SHORT).show();
 			//mode.finish();
+			Intent intent = new Intent();
+			if(item.getTitle().toString()!=null&&(item.getTitle().toString().equalsIgnoreCase("影院列表"))){
+	            intent.setClass(MainActivity.this, CinemaListActivity.class);
+	            startActivity(intent);	
+			}
+			if(item.getTitle().toString()!=null&&(item.getTitle().toString().equalsIgnoreCase("场次票价"))){
+	            intent.setClass(MainActivity.this, MovieSchedulerActivity.class);
+	            startActivity(intent);	
+			}
+            //finish();
 			return true;
 		}
 

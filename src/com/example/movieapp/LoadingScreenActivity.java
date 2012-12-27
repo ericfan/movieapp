@@ -75,14 +75,11 @@ public class LoadingScreenActivity extends SherlockActivity {
 					msg.what = TYPE_STOP;
 					myHandler.sendMessage(msg);
 				}
-	    		
-				
 		     }
 	    }
 	    
 	    class IndexThread extends Thread
 	    {
-	    	
 	    	@Override
 		     public void run()
 		     {
